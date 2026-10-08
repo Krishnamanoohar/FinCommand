@@ -223,11 +223,6 @@ export function query<T extends QueryResultRow = QueryResultRow>(text: string, p
   return pool.query<T>(text, params);
 }
 
-/** A client on the SYSTEM connection (bypasses row-level security). Nothing in the app uses this; scripts may. */
-export function getClient(): Promise<PoolClient> {
-  return pool.connect();
-}
-
 /**
  * Transaction helper — mirrors db.withTransaction() from the original connection.js.
  * Inside a company's request (and with the restricted login configured) the transaction is scoped to that
@@ -263,4 +258,4 @@ export async function endPools(): Promise<void> {
 }
 
 export { pool, tenantPool };
-export default { query, getClient, withTransaction, pool, tenantPool };
+export default { query, withTransaction, pool, tenantPool };

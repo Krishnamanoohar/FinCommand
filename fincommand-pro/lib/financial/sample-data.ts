@@ -232,8 +232,3 @@ export function buildSampleLedgers(fyKey: SampleFyKey): TbLedgerRow[] {
   cachedByFy[fyKey] = rows;
   return rows;
 }
-
-/** Test/dev helper — clears the module-level cache (values are static, so this is rarely needed). */
-export function _resetSampleCache(): void {
-  cachedByFy = {};
-}

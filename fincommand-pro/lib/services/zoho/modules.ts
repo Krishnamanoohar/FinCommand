@@ -193,10 +193,6 @@ export function usesBankTable(key: string): boolean {
   return getModule(key)?.store === 'bank_transactions';
 }
 
-export function modulesForPhases(phases: Array<'A' | 'B'>): ModuleDef[] {
-  return ZOHO_MODULES.filter((m) => phases.includes(m.phase));
-}
-
 /** Whether a module's detail records are read when nothing says otherwise. */
 export function detailDefault(def: ModuleDef): boolean {
   return def.detail === 'lines';

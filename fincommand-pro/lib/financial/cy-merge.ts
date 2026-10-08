@@ -129,17 +129,6 @@ export function mergeCyLedgers(
 }
 
 /**
- * Derive the Calendar Year number from an FY's end_date (or start_date).
- * FY25 ends 2025-03-31  →  CY2025
- * FY24 ends 2024-03-31  →  CY2024
- */
-export function cyYearFromFyDates(startDate: string, endDate?: string | null): number {
-  if (endDate) return parseInt(endDate.slice(0, 4), 10);
-  // Fallback: start_date + 1 year (Apr YYYY → CY YYYY+1)
-  return parseInt(startDate.slice(0, 4), 10) + 1;
-}
-
-/**
  * CY-merge equivalent of mergeCyLedgers() for real per-customer revenue rows
  * (see lib/db/queries/reports.ts::loadCustomerRevenue). Customer revenue is a
  * pure flow metric (like P&L, no opening-balance concept), so this is just

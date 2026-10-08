@@ -295,10 +295,6 @@ export async function updateSavedReport(
   );
 }
 
-export async function touchSavedReportRun(companyId: string, id: string): Promise<void> {
-  await query(`UPDATE report_saved_reports SET last_run_at=NOW() WHERE id=$1 AND company_id=$2`, [id, companyId]);
-}
-
 export async function deleteSavedReport(companyId: string, id: string): Promise<void> {
   await query(`DELETE FROM report_saved_reports WHERE id=$1 AND company_id=$2`, [id, companyId]);
 }

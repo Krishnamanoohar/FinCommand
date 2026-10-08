@@ -204,15 +204,6 @@ export async function loadReportDataVersion(companyId: string): Promise<ReportDa
   return rows[0];
 }
 
-/** Source currency of the year's current batch (null when the batch predates the column). */
-export async function loadBatchCurrency(companyId: string, fyId: string): Promise<string | null> {
-  const { rows } = await query<{ currency: string | null }>(
-    `SELECT currency FROM tb_uploads WHERE company_id = $1 AND financial_year_id = $2 AND is_current = TRUE`,
-    [companyId, fyId]
-  );
-  return rows[0]?.currency ?? null;
-}
-
 /** Verifies FY access — mirrors reports.js getFY(). */
 export async function getFY(companyId: string, fyId: string): Promise<FinancialYearRow | null> {
   const { rows } = await query<FinancialYearRow>(
@@ -339,7 +330,7 @@ export async function loadPreviousStatementLedgers(companyId: string, fyId: stri
 /**
  * The company-level facts a report bundle carries, in ONE query instead of
  * three: currency settings, the audit-trail summary (Compliance tab), and the
- * year's own batch currency (see loadBatchCurrency). Same values as before.
+ * year's own batch currency (the source currency of its current batch). Same values as before.
  */
 export interface ReportContext {
   currency: string | null;

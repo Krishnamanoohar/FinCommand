@@ -35,16 +35,6 @@ export function ThreeYearBanner({ years }: { years: ThreeYearEntry[] }) {
 }
 
 /** A "—" placeholder table cell for years that have no TB data. */
-export function NoDataCol({ label, colSpan = 1 }: { label?: string; colSpan?: number }) {
-  return (
-    <td className="num" colSpan={colSpan} style={{
-      textAlign: 'center', color: 'var(--text3)', fontStyle: 'italic', fontSize: 11,
-    }}>
-      {label || '—'}
-    </td>
-  );
-}
-
 /**
  * Standard 3-year column header row.
  * `particularHeader` — left-column label (e.g. "Particulars").

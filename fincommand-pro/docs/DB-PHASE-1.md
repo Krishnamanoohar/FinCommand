@@ -77,7 +77,7 @@ The ~250 lines of Zoho insert code are gone.
 - **`upload_raw_payloads`:** which responses a batch used, under which label (`P&L Apr`, `BS Opening`, …), period and fetch time.
 - **The migration copied** all 1,158 existing entries, then checked that each one is reachable with identical JSON. The old `raw_zoho_months` column was left as it was.
 - **New syncs** no longer write `raw_zoho_months`. Zoho's volatile `page_context` access timestamps are stripped before hashing, so an unchanged month really is stored only once.
-- **Reading:** `loadBatchRawPayloads()` reads the store, and falls back to the old column for a batch that has no links.
+- **Reading:** `loadBatchRawPayloads()` read the store, and fell back to the old column for a batch that had no links. (Removed 2026-10-08: nothing called it. To read a batch's raw responses, join `upload_raw_payloads` to `raw_payloads` by `upload_id`.)
 
 ### 3.4 Stable account identity (migration `0005`)
 

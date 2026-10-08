@@ -26,7 +26,8 @@ Thumbs.db
 
 # Logs
 *.log
-logs/
+# Root-level log folder only (LOG_DIR) — a bare "logs/" also matched app/api/v1/zoho/logs/, so that route was never committed.
+/logs/
 
 # Local uploads (dev-only, never persisted in prod)
 uploads/
